@@ -15,8 +15,8 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Cambria', sans-serif;
+    line-height: 1.5;
     color: var(--color-text);
     background: #ffffff;
 }
@@ -75,7 +75,7 @@ body {
 
 .hero-container {
     display: grid;
-    grid-template-columns: 0.15fr 0.8fr;
+    grid-template-columns: 130px 1fr;
     gap: 2rem;
     width: 100%;
     align-items: center;
@@ -88,11 +88,12 @@ body {
 }
 
 .hero-image img {
-    width: 100%;
-    border-radius: 12px;
+    width: 130px;
+    height: 150px;
+    border-radius: 25%;
     border: 1px solid var(--color-border);
-    aspect-ratio: 5 / 6;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .hero-image-caption {
@@ -112,6 +113,41 @@ body {
     font-size: 1.75rem;
     font-weight: 700;
     line-height: 1.2;
+}
+
+.hero-fabs {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.hero-fab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 1rem;
+    background: white;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+}
+
+.hero-fab:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    background: var(--color-bg);
+}
+
+.hero-fab img {
+    width: 1.1rem;
+    height: 1.1rem;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 /* Buttons */
@@ -174,6 +210,7 @@ body {
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     align-items: flex-start;
+    cursor: pointer;
 }
 
 .work-card:hover {
