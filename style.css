@@ -251,18 +251,22 @@ body {
 }
 
 .work-description {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease, margin-top 0.2s ease;
+}
+
+.work-description-inner {
     color: var(--color-text-muted);
     font-size: 0.95rem;
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, margin-top 0.2s ease;
 }
 
 .work-card.is-open .work-description {
-    max-height: 600px;
+    grid-template-rows: 1fr;
     margin-top: 0.75rem;
 }
 
@@ -553,6 +557,14 @@ body {
     .container {
         padding-left: 0.67rem;
         padding-right: 0.67rem;
+    }
+
+    .work-content {
+        padding-right: 0.5rem;
+    }
+
+    .work-toggle {
+        padding-right: 0.4rem;
     }
 
     .hero-container {
