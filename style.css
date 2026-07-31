@@ -539,9 +539,20 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .nav-container {
+        padding-left: 0.67rem;
+        padding-right: 0.67rem;
+    }
+
     .hero {
-        padding: 2rem 1rem;
+        width: 100%;
+        padding: 2rem 0.67rem;
         min-height: auto;
+    }
+
+    .container {
+        padding-left: 0.67rem;
+        padding-right: 0.67rem;
     }
 
     .hero-container {
@@ -561,8 +572,17 @@ body {
         order: -1;
     }
 
+    .nav-logo {
+        font-size: 1.75rem;
+    }
+
     .nav-menu {
         gap: 1rem;
+    }
+
+    .section-title,
+    .footer-title {
+        font-size: 1.35rem;
     }
 
     .timeline {
