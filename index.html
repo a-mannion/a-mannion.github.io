@@ -6,6 +6,17 @@
 
     <!-- CSS styling -->
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            try {
+                const stored = localStorage.getItem('theme');
+                const theme = stored === 'light' || stored === 'dark'
+                    ? stored
+                    : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {}
+        })();
+    </script>
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
@@ -26,6 +37,10 @@
                 <li><a href="#publications" class="nav-link">Publications</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                <span class="theme-toggle-icon-light" aria-hidden="true">🌙</span>
+                <span class="theme-toggle-icon-dark" aria-hidden="true">☀️</span>
+            </button>
         </div>
     </nav>
 
@@ -42,19 +57,19 @@
                 <p>I completed my BSc. in Mathematical Sciences at the <a href="https://www.universityofgalway.ie/">University of Galway</a>, my MSc. in Industrial and Applied Mathematics at <a href="https://www.univ-grenoble-alpes.fr/">Université Grenoble Alpes</a>, and my PhD at the <a href="https://www.liglab.fr/en">LIG</a> under the supervision of Profs. Didier Schwab and Lorraine Goeuriot.</p>
                 <div class="hero-fabs">
                     <a href="https://github.com/a-mannion" class="hero-fab" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <img src="assets/link-icons/icons8-github-64.png" alt="" aria-hidden="true">
+                        <img src="assets/link-icons/icons8-github-96.png" alt="" aria-hidden="true">
                         GitHub
                     </a>
                     <a href="https://huggingface.co/a-mannion" class="hero-fab" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face">
-                        <img src="assets/link-icons/icons8-hugging-face-50.png" alt="" aria-hidden="true">
+                        <img src="assets/link-icons/icons8-hugging-face-96.png" alt="" aria-hidden="true">
                         Hugging Face
                     </a>
                     <a href="https://www.linkedin.com/in/aidan-mannion/" class="hero-fab" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <img src="assets/link-icons/icons8-linkedin-30.png" alt="" aria-hidden="true">
+                        <img src="assets/link-icons/icons8-linkedin-96.png" alt="" aria-hidden="true">
                         LinkedIn
                     </a>
                     <a href="https://scholar.google.com/citations?user=RzU4O6gAAAAJ&hl=en" class="hero-fab" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-                        <img src="assets/link-icons/icons8-google-scholar-48.png" alt="" aria-hidden="true">
+                        <img src="assets/link-icons/icons8-google-scholar-96.png" alt="" aria-hidden="true">
                         Google Scholar
                     </a>
                 </div>
@@ -248,6 +263,19 @@
 
     <script src="assets/articles.js"></script>
     <script>
+        (function () {
+            const toggle = document.getElementById('theme-toggle');
+            if (!toggle) return;
+            toggle.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                try {
+                    localStorage.setItem('theme', next);
+                } catch (e) {}
+            });
+        })();
+
         document.querySelectorAll('.work-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 if (e.target.closest('a')) return;
